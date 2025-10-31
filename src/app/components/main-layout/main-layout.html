@@ -3,7 +3,9 @@
   <app-sidebar></app-sidebar>
   
   <!-- Main Content -->
-  <div class="lg:pl-64">
+  <div class="transition-all duration-300"
+       [class.lg:pl-64]="!isSidebarCollapsed"
+       [class.lg:pl-20]="isSidebarCollapsed">
     <!-- Header -->
     <app-header></app-header>
     

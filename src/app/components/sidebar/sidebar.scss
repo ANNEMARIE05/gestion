@@ -23,3 +23,48 @@
 .rotate-180 {
   transform: rotate(180deg);
 }
+
+/* Tooltip styles for collapsed sidebar */
+.nav-item {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    right: calc(100% - 1px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: #1f2937;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 51;
+  }
+  
+  &.collapsed:hover::after {
+    opacity: 1;
+  }
+  
+  &::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1f2937;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 50;
+  }
+  
+  &.collapsed:hover::before {
+    opacity: 1;
+  }
+}

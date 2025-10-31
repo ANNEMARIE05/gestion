@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,21 +12,35 @@ import { filter } from 'rxjs/operators';
   templateUrl: './sidebar.html',
   styleUrls: ['./sidebar.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
   isProductionMenuOpen = false;
+  isCollapsed = false;
+  private subscriptions = new Subscription();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private sidebarService: SidebarService
+  ) {}
 
   ngOnInit() {
+    // Synchroniser avec le service
+    this.subscriptions.add(
+      this.sidebarService.isCollapsed$.subscribe(collapsed => {
+        this.isCollapsed = collapsed;
+      })
+    );
+
     // Ouvrir automatiquement le menu Production si on est sur une route enfant
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        const url = event.urlAfterRedirects;
-        if (url.includes('/production') || url.includes('/projets') || url.includes('/applications') || url.includes('/planification')) {
-          this.isProductionMenuOpen = true;
-        }
-      });
+    this.subscriptions.add(
+      this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe((event: NavigationEnd) => {
+          const url = event.urlAfterRedirects;
+          if (url.includes('/production') || url.includes('/projets') || url.includes('/applications') || url.includes('/planification')) {
+            this.isProductionMenuOpen = true;
+          }
+        })
+    );
 
     // Vérifier la route actuelle au chargement
     const currentUrl = this.router.url;
@@ -35,5 +51,18 @@ export class SidebarComponent implements OnInit {
 
   toggleProductionMenu() {
     this.isProductionMenuOpen = !this.isProductionMenuOpen;
+  }
+
+  toggleSidebar() {
+    const willBeCollapsed = !this.sidebarService.getIsCollapsed();
+    this.sidebarService.toggle();
+    // Fermer le menu Production si on collapse la sidebar
+    if (willBeCollapsed) {
+      this.isProductionMenuOpen = false;
+    }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }
