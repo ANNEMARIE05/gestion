@@ -1,0 +1,25 @@
+/* Sidebar styles */
+
+/* Animation pour les éléments actifs */
+.router-link-active {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border-right: 2px solid #3b82f6 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Hover effects améliorés */
+.sidebar-link {
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-link:hover {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+  transform: translateX(2px);
+}
+
+/* Rotation du chevron pour le menu déroulant */
+.rotate-180 {
+  transform: rotate(180deg);
+}

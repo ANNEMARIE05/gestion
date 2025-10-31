@@ -1,0 +1,122 @@
+<!-- Sidebar -->
+<div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
+  <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4 shadow-xl border-r border-gray-200">
+    <!-- Logo -->
+    <div class="flex h-16 shrink-0 items-center">
+      <div class="flex items-center space-x-3">
+        <div class="h-10 w-10 rounded-lg flex items-center justify-center shadow-lg overflow-hidden">
+          <img src="../../../public/img/ngser_logo.jpeg" alt="NGSER Logo" class="h-full w-full object-cover">
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-gray-900">Tableau R&D</h1>
+          <p class="text-xs text-gray-500">NGSER</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="flex flex-1 flex-col">
+      <ul role="list" class="flex flex-1 flex-col gap-y-7">
+        <li>
+          <ul role="list" class="-mx-2 space-y-1">
+            <!-- Dashboard -->
+            <li>
+              <a routerLink="/dashboard" 
+                 routerLinkActive="bg-blue-50 text-blue-700 border-r-2 border-blue-500 shadow-sm" 
+                 class="group flex gap-x-3 rounded-md p-3 text-sm leading-6 font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                <i class="fas fa-tachometer-alt h-6 w-6 shrink-0 flex items-center justify-center"></i>
+                <span class="flex items-center">Dashboard</span>
+              </a>
+            </li>
+            
+            <!-- Gestion des utilisateurs -->
+            <li>
+              <a routerLink="/users" 
+                 routerLinkActive="bg-blue-50 text-blue-700 border-r-2 border-blue-500 shadow-sm"
+                 class="group flex gap-x-3 rounded-md p-3 text-sm leading-6 font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                <i class="fas fa-users h-6 w-6 shrink-0 flex items-center justify-center"></i>
+                <span class="flex items-center">Utilisateurs</span>
+              </a>
+            </li>
+            
+            <!-- Production Informatique (Menu déroulant) -->
+            <li>
+              <div>
+                <button (click)="toggleProductionMenu()" 
+                        class="group flex w-full items-center justify-between gap-x-3 rounded-md p-3 text-sm leading-6 font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                  <div class="flex gap-x-3 items-center">
+                    <i class="fas fa-cogs h-6 w-6 shrink-0 flex items-center justify-center"></i>
+                    <span class="flex items-center">Production</span>
+                  </div>
+                  <i class="fas fa-chevron-down h-4 w-4 shrink-0 transition-transform duration-200" 
+                     [class.rotate-180]="isProductionMenuOpen"></i>
+                </button>
+                <ul *ngIf="isProductionMenuOpen" class="ml-9 mt-1 space-y-1">
+                  <!-- Bilan -->
+                  <li>
+                    <a routerLink="/production" 
+                       routerLinkActive="bg-blue-50 text-blue-700 border-r-2 border-blue-500 shadow-sm"
+                       class="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                      <i class="fas fa-chart-bar h-5 w-5 shrink-0 flex items-center justify-center"></i>
+                      <span class="flex items-center">Bilan</span>
+                    </a>
+                  </li>
+                  
+                  <!-- Projets -->
+                  <li>
+                    <a routerLink="/projets" 
+                       routerLinkActive="bg-blue-50 text-blue-700 border-r-2 border-blue-500 shadow-sm"
+                       class="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                      <i class="fas fa-project-diagram h-5 w-5 shrink-0 flex items-center justify-center"></i>
+                      <span class="flex items-center">Projets</span>
+                    </a>
+                  </li>
+                  
+                  <!-- Applications -->
+                  <li>
+                    <a routerLink="/applications" 
+                       routerLinkActive="bg-blue-50 text-blue-700 border-r-2 border-blue-500 shadow-sm"
+                       class="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                      <i class="fas fa-laptop-code h-5 w-5 shrink-0 flex items-center justify-center"></i>
+                      <span class="flex items-center">Applications</span>
+                    </a>
+                  </li>
+                  
+                  <!-- Planification -->
+                  <li>
+                    <a routerLink="/planification" 
+                       routerLinkActive="bg-blue-50 text-blue-700 border-r-2 border-blue-500 shadow-sm"
+                       class="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                      <i class="fas fa-calendar-alt h-5 w-5 shrink-0 flex items-center justify-center"></i>
+                      <span class="flex items-center">Planification</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            
+            <!-- Audit Informatique -->
+            <li>
+              <a routerLink="/audit" 
+                 routerLinkActive="bg-blue-50 text-blue-700 border-r-2 border-blue-500 shadow-sm"
+                 class="group flex gap-x-3 rounded-md p-3 text-sm leading-6 font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                <i class="fas fa-search h-6 w-6 shrink-0 flex items-center justify-center"></i>
+                <span class="flex items-center">Audit</span>
+              </a>
+            </li>
+            
+            <!-- Veille Technologie -->
+            <li>
+              <a routerLink="/veille" 
+                 routerLinkActive="bg-blue-50 text-blue-700 border-r-2 border-blue-500 shadow-sm"
+                 class="group flex gap-x-3 rounded-md p-3 text-sm leading-6 font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200">
+                <i class="fas fa-eye h-6 w-6 shrink-0 flex items-center justify-center"></i>
+                <span class="flex items-center">Veille Tech</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

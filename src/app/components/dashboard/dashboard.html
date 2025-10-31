@@ -1,0 +1,230 @@
+<div class="animate-fade-in">
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+    <p class="mt-2 text-sm text-gray-600">Vue d'ensemble de votre système de gestion d'entreprise</p>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+    <!-- Users Card -->
+    <div class="card-shadow bg-white rounded-lg p-6 hover:shadow-lg transition-all duration-300 animate-slide-up">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="h-12 w-12 bg-orange-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-users text-orange-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm font-medium text-gray-500">Utilisateurs</p>
+          <p class="text-2xl font-bold text-gray-900">{{ stats.users.total }}</p>
+          <p class="text-xs text-orange-600">{{ stats.users.actifs }} actifs</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Production Card -->
+    <div class="card-shadow bg-white rounded-lg p-6 hover:shadow-lg transition-all duration-300 animate-slide-up" style="animation-delay: 0.1s">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-cogs text-blue-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm font-medium text-gray-500">Production</p>
+          <p class="text-2xl font-bold text-gray-900">{{ stats.production.total }}</p>
+          <p class="text-xs text-green-600">{{ stats.production.actifs }} actifs</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audit Card -->
+    <div class="card-shadow bg-white rounded-lg p-6 hover:shadow-lg transition-all duration-300 animate-slide-up" style="animation-delay: 0.2s">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-search text-green-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm font-medium text-gray-500">Audits</p>
+          <p class="text-2xl font-bold text-gray-900">{{ stats.audit.total }}</p>
+          <p class="text-xs text-blue-600">{{ stats.audit.enCours }} en cours</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Veille Card -->
+    <div class="card-shadow bg-white rounded-lg p-6 hover:shadow-lg transition-all duration-300 animate-slide-up" style="animation-delay: 0.3s">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-eye text-purple-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm font-medium text-gray-500">Veille</p>
+          <p class="text-2xl font-bold text-gray-900">{{ stats.veille.total }}</p>
+          <p class="text-xs text-purple-600">{{ stats.veille.tendances }} tendances</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions Rapides -->
+  <div class="mb-8">
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Actions Rapides</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Utilisateurs -->
+      <a routerLink="/users" class="card-shadow bg-white rounded-lg p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div class="flex items-center justify-between mb-3">
+          <div class="h-10 w-10 bg-orange-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-users text-orange-600"></i>
+          </div>
+          <span class="text-xs font-medium text-orange-600 bg-orange-50 px-2 py-1 rounded-full">
+            {{ stats.users.total }}
+          </span>
+        </div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-1">Utilisateurs</h3>
+        <p class="text-xs text-gray-500 mb-2">{{ stats.users.actifs }} actifs</p>
+        <div class="flex items-center text-xs text-orange-600 font-medium">
+          <span>Accéder</span>
+          <i class="fas fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+
+      <!-- Production -->
+      <a routerLink="/production" class="card-shadow bg-white rounded-lg p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div class="flex items-center justify-between mb-3">
+          <div class="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-cogs text-blue-600"></i>
+          </div>
+          <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+            {{ stats.production.total }}
+          </span>
+        </div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-1">Production</h3>
+        <p class="text-xs text-gray-500 mb-2">{{ stats.production.actifs }} éléments actifs</p>
+        <div class="flex items-center text-xs text-blue-600 font-medium">
+          <span>Accéder</span>
+          <i class="fas fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+
+      <!-- Projets -->
+      <a routerLink="/projets" class="card-shadow bg-white rounded-lg p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div class="flex items-center justify-between mb-3">
+          <div class="h-10 w-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-project-diagram text-indigo-600"></i>
+          </div>
+          <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+            {{ stats.projets.total }}
+          </span>
+        </div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-1">Projets</h3>
+        <p class="text-xs text-gray-500 mb-2">{{ stats.projets.enCours }} en cours</p>
+        <div class="flex items-center text-xs text-indigo-600 font-medium">
+          <span>Accéder</span>
+          <i class="fas fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+
+      <!-- Applications -->
+      <a routerLink="/applications" class="card-shadow bg-white rounded-lg p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div class="flex items-center justify-between mb-3">
+          <div class="h-10 w-10 bg-teal-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-laptop-code text-teal-600"></i>
+          </div>
+          <span class="text-xs font-medium text-teal-600 bg-teal-50 px-2 py-1 rounded-full">
+            {{ stats.applications.total }}
+          </span>
+        </div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-1">Applications</h3>
+        <p class="text-xs text-gray-500 mb-2">{{ stats.applications.actives }} actives</p>
+        <div class="flex items-center text-xs text-teal-600 font-medium">
+          <span>Accéder</span>
+          <i class="fas fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+
+      <!-- Planification -->
+      <a routerLink="/planification" class="card-shadow bg-white rounded-lg p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div class="flex items-center justify-between mb-3">
+          <div class="h-10 w-10 bg-pink-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-calendar-alt text-pink-600"></i>
+          </div>
+          <span class="text-xs font-medium text-pink-600 bg-pink-50 px-2 py-1 rounded-full">
+            {{ stats.planification.total }}
+          </span>
+        </div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-1">Planification</h3>
+        <p class="text-xs text-gray-500 mb-2">{{ stats.planification.aVenir }} à venir</p>
+        <div class="flex items-center text-xs text-pink-600 font-medium">
+          <span>Accéder</span>
+          <i class="fas fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+
+      <!-- Audit -->
+      <a routerLink="/audit" class="card-shadow bg-white rounded-lg p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div class="flex items-center justify-between mb-3">
+          <div class="h-10 w-10 bg-green-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-search text-green-600"></i>
+          </div>
+          <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">
+            {{ stats.audit.total }}
+          </span>
+        </div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-1">Audit</h3>
+        <p class="text-xs text-gray-500 mb-2">{{ stats.audit.enCours }} en cours</p>
+        <div class="flex items-center text-xs text-green-600 font-medium">
+          <span>Accéder</span>
+          <i class="fas fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+
+      <!-- Veille -->
+      <a routerLink="/veille" class="card-shadow bg-white rounded-lg p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div class="flex items-center justify-between mb-3">
+          <div class="h-10 w-10 bg-purple-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-eye text-purple-600"></i>
+          </div>
+          <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded-full">
+            {{ stats.veille.total }}
+          </span>
+        </div>
+        <h3 class="text-sm font-semibold text-gray-900 mb-1">Veille Tech</h3>
+        <p class="text-xs text-gray-500 mb-2">{{ stats.veille.tendances }} tendances</p>
+        <div class="flex items-center text-xs text-purple-600 font-medium">
+          <span>Accéder</span>
+          <i class="fas fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="mt-8">
+    <div class="card-shadow bg-white rounded-lg p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Activité récente</h3>
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <div class="h-2 w-2 bg-blue-600 rounded-full"></div>
+          <p class="text-sm text-gray-600">Nouveau projet de production ajouté</p>
+          <span class="text-xs text-gray-400">Il y a 2 heures</span>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="h-2 w-2 bg-green-600 rounded-full"></div>
+          <p class="text-sm text-gray-600">Audit de sécurité terminé</p>
+          <span class="text-xs text-gray-400">Il y a 4 heures</span>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="h-2 w-2 bg-purple-600 rounded-full"></div>
+          <p class="text-sm text-gray-600">Nouvelle tendance technologique identifiée</p>
+          <span class="text-xs text-gray-400">Il y a 6 heures</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

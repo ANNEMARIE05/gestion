@@ -1,0 +1,185 @@
+<div class="animate-fade-in">
+  <!-- Header -->
+  <div class="mb-8">
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">Modifier la Planification</h1>
+        <p class="mt-2 text-sm text-gray-600">Modifier les informations de la planification</p>
+      </div>
+      <button routerLink="/planification" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center">
+        <i class="fas fa-arrow-left mr-2"></i>Retour
+      </button>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="card-shadow bg-white rounded-none p-8" *ngIf="planification">
+    <form (ngSubmit)="onSubmit()" #planificationForm="ngForm">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <!-- Application -->
+        <div class="lg:col-span-2">
+          <label for="application" class="block text-sm font-medium text-gray-700 mb-2">
+            Application <span class="text-red-500">*</span>
+          </label>
+          <select 
+            id="application" 
+            name="application"
+            [(ngModel)]="selectedApplicationId"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <option value="">Sélectionner une application</option>
+            <option *ngFor="let app of applications" [value]="app.id">{{ app.projet.nom }} - {{ app.livrable }}</option>
+          </select>
+        </div>
+
+        <!-- Titre -->
+        <div class="lg:col-span-2">
+          <label for="titre" class="block text-sm font-medium text-gray-700 mb-2">
+            Titre <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="titre" 
+            name="titre"
+            [(ngModel)]="planification.titre"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Titre de la planification">
+        </div>
+
+        <!-- Date de début -->
+        <div>
+          <label for="date_debut" class="block text-sm font-medium text-gray-700 mb-2">
+            Date de début <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="date" 
+            id="date_debut" 
+            name="date_debut"
+            [value]="formatDateForInput(planification.date_debut)"
+            (change)="onDateChange($any($event.target).value, 'date_debut')"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        </div>
+
+        <!-- Date de fin -->
+        <div>
+          <label for="date_fin" class="block text-sm font-medium text-gray-700 mb-2">
+            Date de fin <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="date" 
+            id="date_fin" 
+            name="date_fin"
+            [value]="formatDateForInput(planification.date_fin)"
+            (change)="onDateChange($any($event.target).value, 'date_fin')"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        </div>
+
+        <!-- État d'avancement -->
+        <div>
+          <label for="etat_avancement" class="block text-sm font-medium text-gray-700 mb-2">
+            État d'avancement (%) <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="number" 
+            id="etat_avancement" 
+            name="etat_avancement"
+            [(ngModel)]="planification.etat_avancement"
+            required
+            min="0"
+            max="100"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="0-100">
+        </div>
+
+        <!-- Statut -->
+        <div>
+          <label for="statut" class="block text-sm font-medium text-gray-700 mb-2">
+            Statut <span class="text-red-500">*</span>
+          </label>
+          <select 
+            id="statut" 
+            name="statut"
+            [(ngModel)]="planification.statut"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <option value="en_cours">En cours</option>
+            <option value="termine">Terminé</option>
+            <option value="en_retard">En retard</option>
+            <option value="annule">Annulé</option>
+          </select>
+        </div>
+
+        <!-- Problème rencontré -->
+        <div class="lg:col-span-2">
+          <label for="probleme_rencontrer" class="block text-sm font-medium text-gray-700 mb-2">
+            Problème rencontré
+          </label>
+          <textarea 
+            id="probleme_rencontrer" 
+            name="probleme_rencontrer"
+            [(ngModel)]="planification.probleme_rencontrer"
+            rows="3"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Décrire les problèmes rencontrés"></textarea>
+        </div>
+
+        <!-- Action corrective -->
+        <div class="lg:col-span-2">
+          <label for="action_corrective" class="block text-sm font-medium text-gray-700 mb-2">
+            Action corrective
+          </label>
+          <textarea 
+            id="action_corrective" 
+            name="action_corrective"
+            [(ngModel)]="planification.action_corrective"
+            rows="3"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Décrire les actions correctives"></textarea>
+        </div>
+
+        <!-- Date de finition -->
+        <div>
+          <label for="date_finition" class="block text-sm font-medium text-gray-700 mb-2">
+            Date de finition
+          </label>
+          <input 
+            type="date" 
+            id="date_finition" 
+            name="date_finition"
+            [value]="planification.date_finition ? formatDateForInput(planification.date_finition) : ''"
+            (change)="onDateFinitionChange($any($event.target).value)"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        </div>
+
+        <!-- Commentaire -->
+        <div class="lg:col-span-2">
+          <label for="commentaire" class="block text-sm font-medium text-gray-700 mb-2">
+            Commentaire
+          </label>
+          <textarea 
+            id="commentaire" 
+            name="commentaire"
+            [(ngModel)]="planification.commentaire"
+            rows="3"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Commentaires additionnels"></textarea>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="mt-8 flex justify-end space-x-3">
+        <button type="button" routerLink="/planification" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+          Annuler
+        </button>
+        <button type="submit" [disabled]="isLoading || !planificationForm.valid" [class.opacity-50]="isLoading || !planificationForm.valid" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+          <span *ngIf="!isLoading">Enregistrer</span>
+          <span *ngIf="isLoading">Enregistrement...</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

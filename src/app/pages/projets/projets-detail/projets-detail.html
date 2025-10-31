@@ -1,0 +1,88 @@
+<div class="animate-fade-in">
+  <!-- Header -->
+  <div class="mb-8">
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">{{ projet?.nom }}</h1>
+        <p class="mt-2 text-sm text-gray-600">Détails du projet</p>
+      </div>
+      <div class="flex space-x-3">
+        <button routerLink="/projets" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center">
+          <i class="fas fa-arrow-left mr-2"></i>Retour
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="projet" class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+    <!-- Informations principales -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Informations générales -->
+      <div class="card-shadow bg-white rounded-none p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Informations générales</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Nom</label>
+            <p class="mt-1 text-sm text-gray-900">{{ projet.nom }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Date de création</label>
+            <p class="mt-1 text-sm text-gray-900">{{ projet.created_at | date:'dd/MM/yyyy' }}</p>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium text-gray-500">Description</label>
+            <p class="mt-1 text-sm text-gray-700 whitespace-pre-line">{{ projet.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TPM -->
+      <div class="card-shadow bg-white rounded-none p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">TPM (Technical Project Manager)</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Nom</label>
+            <p class="mt-1 text-sm text-gray-900">{{ projet.tpm.nom }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Email</label>
+            <p class="mt-1 text-sm text-gray-900">{{ projet.tpm.email }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Contact</label>
+            <p class="mt-1 text-sm text-gray-900">{{ projet.tpm.contact }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Profil</label>
+            <p class="mt-1 text-sm text-gray-900">{{ projet.tpm.profile }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="space-y-6">
+      <!-- Métadonnées -->
+      <div class="card-shadow bg-white rounded-none p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Métadonnées</h3>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-medium text-gray-500">Créé le</label>
+            <p class="text-sm text-gray-900">{{ projet.created_at | date:'dd/MM/yyyy' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message si projet non trouvé -->
+  <div *ngIf="!projet" class="card-shadow bg-white rounded-none p-8 text-center">
+    <i class="fas fa-exclamation-triangle text-yellow-500 text-4xl mb-4"></i>
+    <h2 class="text-xl font-semibold text-gray-900 mb-2">Projet non trouvé</h2>
+    <p class="text-gray-600 mb-4">Le projet demandé n'existe pas ou a été supprimé.</p>
+    <button routerLink="/projets" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+      Retour à la liste
+    </button>
+  </div>
+</div>
+

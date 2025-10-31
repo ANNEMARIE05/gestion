@@ -1,0 +1,391 @@
+.login-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+// Background decorative circles
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.bg-circle-1 {
+  width: 400px;
+  height: 400px;
+  background: #60a5fa;
+  top: -150px;
+  left: -150px;
+}
+
+.bg-circle-2 {
+  width: 500px;
+  height: 500px;
+  background: #a855f7;
+  bottom: -200px;
+  right: -200px;
+}
+
+// Content wrapper
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+// Login Card (White - Centered)
+.login-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 50px 40px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 450px;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  text-decoration: underline;
+  margin: 0;
+}
+
+// Form
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.input-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.input-separator {
+  width: 1px;
+  height: 30px;
+  background: #e0e0e0;
+}
+
+.login-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px 15px;
+  font-size: 14px;
+  background: transparent;
+  color: #333;
+  
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #333;
+}
+
+.checkbox-label {
+  font-size: 14px;
+  color: #333;
+  user-select: none;
+}
+
+.forgot-link {
+  font-size: 14px;
+  color: #333;
+  text-decoration: underline;
+  cursor: pointer;
+  
+  &:hover {
+    color: #2563eb;
+  }
+}
+
+.login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.3);
+  
+  &:hover:not(:disabled) {
+    background: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.4);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .login-container {
+    padding: 15px;
+  }
+
+  .bg-circle-1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+  }
+
+  .bg-circle-2 {
+    width: 350px;
+    height: 350px;
+    bottom: -150px;
+    right: -150px;
+  }
+
+  .login-card {
+    padding: 35px 25px;
+    max-width: 100%;
+  }
+
+  .login-content {
+    gap: 20px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+
+  .login-form {
+    gap: 15px;
+  }
+
+  .login-input {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .input-icon {
+    width: 35px;
+    height: 35px;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .checkbox-label,
+  .forgot-link {
+    font-size: 12px;
+  }
+
+  .login-button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .button-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border-width: 2.5px;
+  }
+}
+
+// Mobile phones (small screens)
+@media (max-width: 480px) {
+  .login-container {
+    padding: 10px;
+    min-height: 100vh;
+  }
+
+  .bg-circle-1 {
+    width: 200px;
+    height: 200px;
+    top: -80px;
+    left: -80px;
+  }
+
+  .bg-circle-2 {
+    width: 250px;
+    height: 250px;
+    bottom: -100px;
+    right: -100px;
+  }
+
+  .login-card {
+    padding: 25px 20px;
+    border-radius: 10px;
+    max-width: 100%;
+  }
+
+  .login-content {
+    gap: 18px;
+  }
+
+  .login-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .login-form {
+    gap: 12px;
+  }
+
+  .input-wrapper {
+    border-radius: 6px;
+  }
+
+  .input-icon {
+    width: 32px;
+    height: 32px;
+    
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .input-separator {
+    height: 25px;
+  }
+
+  .login-input {
+    font-size: 12px;
+    padding: 10px 12px;
+    
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  .options-row {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .checkbox-wrapper {
+    gap: 6px;
+  }
+
+  .checkbox-input {
+    width: 14px;
+    height: 14px;
+  }
+
+  .checkbox-label,
+  .forgot-link {
+    font-size: 11px;
+  }
+
+  .login-button {
+    padding: 11px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .button-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+}
+

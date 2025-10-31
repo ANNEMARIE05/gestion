@@ -1,0 +1,79 @@
+<div class="animate-fade-in">
+  <!-- Header -->
+  <div class="mb-8">
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">Modifier le Projet</h1>
+        <p class="mt-2 text-sm text-gray-600">Modifier les informations du projet</p>
+      </div>
+      <button routerLink="/projets" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center">
+        <i class="fas fa-arrow-left mr-2"></i>Retour
+      </button>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="card-shadow bg-white rounded-none p-8" *ngIf="projet">
+    <form (ngSubmit)="onSubmit()" #projetForm="ngForm">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <!-- Nom -->
+        <div>
+          <label for="nom" class="block text-sm font-medium text-gray-700 mb-2">
+            Nom <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="nom" 
+            name="nom"
+            [(ngModel)]="projet.nom"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Nom du projet">
+        </div>
+
+        <!-- TPM -->
+        <div>
+          <label for="tpm" class="block text-sm font-medium text-gray-700 mb-2">
+            TPM <span class="text-red-500">*</span>
+          </label>
+          <select 
+            id="tpm" 
+            name="tpm"
+            [(ngModel)]="selectedTpmId"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <option value="">Sélectionner un TPM</option>
+            <option *ngFor="let tpm of tpmUsers" [value]="tpm.id">{{ tpm.nom }} ({{ tpm.email }})</option>
+          </select>
+        </div>
+
+        <!-- Description -->
+        <div class="lg:col-span-2">
+          <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+            Description <span class="text-red-500">*</span>
+          </label>
+          <textarea 
+            id="description" 
+            name="description"
+            [(ngModel)]="projet.description"
+            required
+            rows="4"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Description du projet"></textarea>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="mt-8 flex justify-end space-x-3">
+        <button type="button" routerLink="/projets" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+          Annuler
+        </button>
+        <button type="submit" [disabled]="isLoading || !projetForm.valid" [class.opacity-50]="isLoading || !projetForm.valid" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+          <span *ngIf="!isLoading">Enregistrer</span>
+          <span *ngIf="isLoading">Enregistrement...</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

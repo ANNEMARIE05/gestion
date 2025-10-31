@@ -1,0 +1,152 @@
+<div class="animate-fade-in">
+  <!-- Header -->
+  <div class="mb-8">
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">{{ planification?.titre }}</h1>
+        <p class="mt-2 text-sm text-gray-600">{{ planification?.application?.projet?.nom }}</p>
+      </div>
+      <div class="flex space-x-3">
+        <button routerLink="/planification" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center">
+          <i class="fas fa-arrow-left mr-2"></i>Retour
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="planification" class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+    <!-- Informations principales -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Informations générales -->
+      <div class="card-shadow bg-white rounded-none p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Informations générales</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Titre</label>
+            <p class="mt-1 text-sm text-gray-900">{{ planification.titre }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Application</label>
+            <p class="mt-1 text-sm text-gray-900">{{ planification.application.projet.nom }}</p>
+            <p class="mt-1 text-xs text-gray-500">{{ planification.application.livrable }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Date de début</label>
+            <p class="mt-1 text-sm text-gray-900">{{ planification.date_debut | date:'dd/MM/yyyy' }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Date de fin</label>
+            <p class="mt-1 text-sm text-gray-900">{{ planification.date_fin | date:'dd/MM/yyyy' }}</p>
+          </div>
+          <div *ngIf="planification.date_finition">
+            <label class="block text-sm font-medium text-gray-500">Date de finition</label>
+            <p class="mt-1 text-sm text-gray-900">{{ planification.date_finition | date:'dd/MM/yyyy' }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Planning et avancement -->
+      <div class="card-shadow bg-white rounded-none p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Planning et avancement</h2>
+        <div class="mt-6">
+          <label class="block text-sm font-medium text-gray-500 mb-2">État d'avancement</label>
+          <div class="flex items-center">
+            <div class="flex-1 bg-gray-200 rounded-full h-3 mr-4">
+              <div [class]="getProgressBarColor(planification.etat_avancement)" 
+                   class="h-3 rounded-full transition-all duration-300" 
+                   [style.width.%]="planification.etat_avancement"></div>
+            </div>
+            <span class="text-sm font-medium text-gray-900">{{ planification.etat_avancement }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problèmes rencontrés -->
+      <div class="card-shadow bg-white rounded-none p-6" *ngIf="planification.probleme_rencontrer">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Problèmes rencontrés</h2>
+        <p class="text-sm text-gray-700 whitespace-pre-line">{{ planification.probleme_rencontrer }}</p>
+      </div>
+
+      <!-- Actions correctives -->
+      <div class="card-shadow bg-white rounded-none p-6" *ngIf="planification.action_corrective">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Actions correctives</h2>
+        <p class="text-sm text-gray-700 whitespace-pre-line">{{ planification.action_corrective }}</p>
+      </div>
+
+      <!-- Commentaires -->
+      <div class="card-shadow bg-white rounded-none p-6" *ngIf="planification.commentaire">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Commentaires</h2>
+        <p class="text-sm text-gray-700 whitespace-pre-line">{{ planification.commentaire }}</p>
+      </div>
+
+      <!-- Application associée -->
+      <div class="card-shadow bg-white rounded-none p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Application associée</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Projet</label>
+            <p class="mt-1 text-sm text-gray-900">{{ planification.application.projet.nom }}</p>
+            <p class="mt-1 text-xs text-gray-500">{{ planification.application.projet.description }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Livrable</label>
+            <p class="mt-1 text-sm text-gray-900">{{ planification.application.livrable }}</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Stack</label>
+            <div class="mt-1 flex flex-wrap gap-0.5">
+              <span *ngFor="let stack of planification.application.stack" 
+                    class="inline-flex items-center px-1.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+                {{ stack }}
+              </span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-500">Développeur</label>
+            <p class="mt-1 text-sm text-gray-900">{{ planification.application.dev.nom }}</p>
+            <p class="mt-1 text-xs text-gray-500">{{ planification.application.dev.email }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="space-y-6">
+      <!-- Statut de la planification -->
+      <div class="card-shadow bg-white rounded-none p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Statut</h3>
+        <div class="text-center">
+          <div [class]="planification.statut === 'termine' ? 'bg-green-100' : planification.statut === 'en_retard' ? 'bg-red-100' : planification.statut === 'annule' ? 'bg-gray-100' : 'bg-yellow-100'" 
+               class="h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i [class]="planification.statut === 'termine' ? 'fas fa-check-circle text-green-600 text-2xl' : planification.statut === 'en_retard' ? 'fas fa-exclamation-triangle text-red-600 text-2xl' : planification.statut === 'annule' ? 'fas fa-times-circle text-gray-600 text-2xl' : 'fas fa-clock text-yellow-600 text-2xl'"></i>
+          </div>
+          <span [class]="getStatutBadgeClass(planification.statut)" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
+            {{ getStatutLabel(planification.statut) }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Métadonnées -->
+      <div class="card-shadow bg-white rounded-none p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Métadonnées</h3>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-medium text-gray-500">Créé le</label>
+            <p class="text-sm text-gray-900">{{ planification.created_at | date:'dd/MM/yyyy' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message si planification non trouvée -->
+  <div *ngIf="!planification" class="card-shadow bg-white rounded-none p-8 text-center">
+    <i class="fas fa-exclamation-triangle text-yellow-500 text-4xl mb-4"></i>
+    <h2 class="text-xl font-semibold text-gray-900 mb-2">Planification non trouvée</h2>
+    <p class="text-gray-600 mb-4">La planification demandée n'existe pas ou a été supprimée.</p>
+    <button routerLink="/planification" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+      Retour à la liste
+    </button>
+  </div>
+</div>
+
