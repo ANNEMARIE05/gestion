@@ -15,6 +15,7 @@ import { SidebarService } from '../../services/sidebar.service';
 export class SidebarComponent implements OnInit, OnDestroy {
   isProductionMenuOpen = false;
   isCollapsed = false;
+  isMobileOpen = false;
   private subscriptions = new Subscription();
 
   constructor(
@@ -23,10 +24,17 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // Synchroniser avec le service
+    // Synchroniser avec le service pour desktop
     this.subscriptions.add(
       this.sidebarService.isCollapsed$.subscribe(collapsed => {
         this.isCollapsed = collapsed;
+      })
+    );
+
+    // Synchroniser avec le service pour mobile
+    this.subscriptions.add(
+      this.sidebarService.isMobileOpen$.subscribe(open => {
+        this.isMobileOpen = open;
       })
     );
 
@@ -39,6 +47,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
           if (url.includes('/production') || url.includes('/projets') || url.includes('/applications') || url.includes('/planification')) {
             this.isProductionMenuOpen = true;
           }
+          
+          // Fermer la sidebar mobile lors de la navigation
+          this.closeMobileSidebar();
         })
     );
 
@@ -60,6 +71,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
     if (willBeCollapsed) {
       this.isProductionMenuOpen = false;
     }
+  }
+
+  closeMobileSidebar() {
+    this.sidebarService.setMobileOpen(false);
   }
 
   ngOnDestroy() {

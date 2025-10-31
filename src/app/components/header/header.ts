@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +14,17 @@ export class HeaderComponent {
   isDropdownOpen = false;
   showLogoutModal = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private sidebarService: SidebarService
+  ) {}
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  toggleMobileSidebar(): void {
+    this.sidebarService.toggleMobile();
   }
 
   @HostListener('document:click', ['$event'])
