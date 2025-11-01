@@ -17,6 +17,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   isCollapsed = false;
   isMobileOpen = false;
   private subscriptions = new Subscription();
+  private hoverExpanded = false; // Track if expanded by hover
+  private wasCollapsedBeforeHover = false; // Track previous state
 
   constructor(
     private router: Router,
@@ -67,6 +69,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
   toggleSidebar() {
     const willBeCollapsed = !this.sidebarService.getIsCollapsed();
     this.sidebarService.toggle();
+    
+    // Reset hover state when manually toggling
+    this.hoverExpanded = false;
+    this.wasCollapsedBeforeHover = false;
+    
     // Fermer le menu Production si on collapse la sidebar
     if (willBeCollapsed) {
       this.isProductionMenuOpen = false;
@@ -75,6 +82,24 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   closeMobileSidebar() {
     this.sidebarService.setMobileOpen(false);
+  }
+
+  onHoverEnter() {
+    // Only expand on hover if the sidebar is collapsed and not already expanded by hover
+    if (this.isCollapsed && !this.hoverExpanded) {
+      this.wasCollapsedBeforeHover = true;
+      this.hoverExpanded = true;
+      this.sidebarService.setCollapsed(false);
+    }
+  }
+
+  onHoverLeave() {
+    // Only collapse on leave if it was expanded by hover
+    if (this.hoverExpanded && this.wasCollapsedBeforeHover) {
+      this.hoverExpanded = false;
+      this.wasCollapsedBeforeHover = false;
+      this.sidebarService.setCollapsed(true);
+    }
   }
 
   ngOnDestroy() {

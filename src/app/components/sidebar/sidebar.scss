@@ -24,6 +24,16 @@
   transform: rotate(180deg);
 }
 
+/* Make all borders square in sidebar */
+::ng-deep app-sidebar {
+  .rounded-md,
+  .rounded-lg,
+  button,
+  a {
+    border-radius: 0 !important;
+  }
+}
+
 /* Tooltip styles for collapsed sidebar */
 .nav-item {
   position: relative;
