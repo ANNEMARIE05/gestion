@@ -4,30 +4,13 @@ import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { SidebarService } from '../../services/sidebar.service';
-import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './sidebar.html',
-  styleUrls: ['./sidebar.scss'],
-  animations: [
-    trigger('slideInOut', [
-      state('out', style({
-        height: '0px',
-        opacity: 0,
-        overflow: 'hidden',
-        pointerEvents: 'none'
-      })),
-      state('in', style({
-        height: '*',
-        opacity: 1
-      })),
-      transition('out => in', animate('300ms ease-in-out')),
-      transition('in => out', animate('300ms ease-in-out'))
-    ])
-  ]
+  styleUrls: ['./sidebar.scss']
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   isProductionMenuOpen = false;

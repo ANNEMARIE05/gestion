@@ -65,8 +65,7 @@
                   <i class="fas fa-chevron-down h-4 w-4 shrink-0 transition-transform duration-200" 
                      [class.rotate-180]="isProductionMenuOpen"></i>
                 </button>
-                <ul [@slideInOut]="isProductionMenuOpen ? 'in' : 'out'"
-                    class="ml-9 mt-1 space-y-1">
+                <ul *ngIf="isProductionMenuOpen" class="ml-9 mt-1 space-y-1">
                   <!-- Bilan -->
                   <li>
                     <a routerLink="/production" 
@@ -235,8 +234,7 @@
                      [class.rotate-180]="isProductionMenuOpen"
                      *ngIf="!isCollapsed"></i>
                 </button>
-                <ul [@slideInOut]="(isProductionMenuOpen && !isCollapsed) ? 'in' : 'out'"
-                    class="ml-9 mt-1 space-y-1">
+                <ul *ngIf="isProductionMenuOpen && !isCollapsed" class="ml-9 mt-1 space-y-1">
                   <!-- Bilan -->
                   <li>
                     <a routerLink="/production" 
