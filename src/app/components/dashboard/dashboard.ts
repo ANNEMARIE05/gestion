@@ -19,11 +19,11 @@ export class DashboardComponent implements OnInit {
       actifs: 18
     },
     audit: {
-      total: 12,
+      total: 0,
       enCours: 3
     },
     veille: {
-      total: 8,
+      total: 0,
       tendances: 15
     },
     applications: {
