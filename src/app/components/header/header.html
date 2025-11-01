@@ -48,11 +48,11 @@
             <p class="text-sm font-medium text-gray-900">Tom Cook</p>
             <p class="text-xs text-gray-500">tom.cook@entreprise.com</p>
           </div>
-          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200" role="menuitem">
+          <a routerLink="/profile" (click)="isDropdownOpen = false" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200" role="menuitem">
             <i class="fas fa-user mr-3 text-gray-400"></i>
             Mon Profil
           </a>
-          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200" role="menuitem">
+          <a routerLink="/parametre" (click)="isDropdownOpen = false" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200" role="menuitem">
             <i class="fas fa-cog mr-3 text-gray-400"></i>
             Paramètres
           </a>

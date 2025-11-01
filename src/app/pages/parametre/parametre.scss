@@ -1,0 +1,18 @@
+// Mobile responsive optimizations
+@media (max-width: 640px) {
+  .card-shadow {
+    margin-bottom: 0.75rem !important;
+    
+    &:not(:last-child) {
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+
+// Tablet optimizations
+@media (min-width: 641px) and (max-width: 768px) {
+  .card-shadow {
+    padding: 1rem !important;
+  }
+}
+

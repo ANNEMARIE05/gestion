@@ -24,6 +24,8 @@ import { PlanificationEditComponent } from './pages/planification/planification-
 import { UsersCreateComponent } from './pages/users/users-create/users-create';
 import { UsersDetailComponent } from './pages/users/users-detail/users-detail';
 import { UsersEditComponent } from './pages/users/users-edit/users-edit';
+import { ProfileComponent } from './pages/profile/profile';
+import { ParametreComponent } from './pages/parametre/parametre';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -55,6 +57,8 @@ export const routes: Routes = [
       { path: 'planification/create', component: PlanificationCreateComponent },
       { path: 'planification/:id', component: PlanificationDetailComponent },
       { path: 'planification/:id/edit', component: PlanificationEditComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'parametre', component: ParametreComponent },
     ]
   },
   { path: '**', redirectTo: '/login' }
