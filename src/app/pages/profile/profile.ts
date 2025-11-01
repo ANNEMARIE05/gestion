@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, RouterLink, DatePipe],
+  imports: [CommonModule, DatePipe],
   templateUrl: './profile.html',
   styleUrls: ['./profile.scss']
 })
