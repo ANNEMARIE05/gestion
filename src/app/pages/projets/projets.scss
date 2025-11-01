@@ -1,0 +1,15 @@
+// Styles pour les cartes responsive mobile
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Réduction des espacements sur mobile pour les cartes
+@media (max-width: 768px) {
+  .card-shadow {
+    padding: 0.625rem; // p-2.5
+  }
+}
+

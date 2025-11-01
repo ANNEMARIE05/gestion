@@ -1,24 +1,24 @@
 <div class="animate-fade-in">
   <!-- Header -->
-  <div class="mb-8">
-    <div class="flex items-center justify-between">
+  <div class="mb-4 md:mb-8">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
       <div>
-        <h1 class="text-3xl font-bold text-gray-900">Modifier l'Utilisateur</h1>
-        <p class="mt-2 text-sm text-gray-600">Modifier les informations de l'utilisateur</p>
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">Modifier l'Utilisateur</h1>
+        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-600">Modifier les informations de l'utilisateur</p>
       </div>
-      <button routerLink="/users" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center">
-        <i class="fas fa-arrow-left mr-2"></i>Retour
+      <button routerLink="/users" class="bg-gray-100 text-gray-700 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center text-xs sm:text-sm w-full sm:w-auto">
+        <i class="fas fa-arrow-left mr-1 sm:mr-2"></i>Retour
       </button>
     </div>
   </div>
 
   <!-- Form -->
-  <div class="card-shadow bg-white rounded-none p-8" *ngIf="user">
+  <div class="card-shadow bg-white rounded-none p-3 sm:p-4 md:p-6 lg:p-8" *ngIf="user">
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div class="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 lg:grid-cols-2">
         <!-- Nom -->
         <div>
-          <label for="nom" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="nom" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
             Nom <span class="text-red-500">*</span>
           </label>
           <input 
@@ -27,13 +27,13 @@
             name="nom"
             [(ngModel)]="user.nom"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full px-2 py-1.5 sm:px-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
             placeholder="Nom complet">
         </div>
 
         <!-- Email -->
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="email" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
             Email <span class="text-red-500">*</span>
           </label>
           <input 
@@ -42,13 +42,13 @@
             name="email"
             [(ngModel)]="user.email"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full px-2 py-1.5 sm:px-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
             placeholder="email@exemple.com">
         </div>
 
         <!-- Contact -->
         <div>
-          <label for="contact" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="contact" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
             Contact <span class="text-red-500">*</span>
           </label>
           <input 
@@ -57,13 +57,13 @@
             name="contact"
             [(ngModel)]="user.contact"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full px-2 py-1.5 sm:px-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
             placeholder="+33 6 12 34 56 78">
         </div>
 
         <!-- Profil -->
         <div>
-          <label for="profile" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="profile" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
             Profil <span class="text-red-500">*</span>
           </label>
           <select 
@@ -71,7 +71,7 @@
             name="profile"
             [(ngModel)]="user.profile"
             required
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            class="w-full px-2 py-1.5 sm:px-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm">
             <option value="">Sélectionner un profil</option>
             <option value="TPM">TPM</option>
             <option value="DEV">DEV</option>
@@ -81,11 +81,11 @@
       </div>
 
       <!-- Actions -->
-      <div class="mt-8 flex justify-end space-x-3">
-        <button type="button" routerLink="/users" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200">
+      <div class="mt-4 sm:mt-6 md:mt-8 flex flex-col sm:flex-row justify-end gap-2 sm:gap-3">
+        <button type="button" routerLink="/users" class="bg-gray-100 text-gray-700 px-4 py-1.5 sm:px-6 sm:py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200 text-xs sm:text-sm w-full sm:w-auto">
           Annuler
         </button>
-        <button type="submit" [disabled]="isLoading || !userForm.valid" [class.opacity-50]="isLoading || !userForm.valid" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+        <button type="submit" [disabled]="isLoading || !userForm.valid" [class.opacity-50]="isLoading || !userForm.valid" class="bg-blue-600 text-white px-4 py-1.5 sm:px-6 sm:py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-xs sm:text-sm w-full sm:w-auto">
           <span *ngIf="!isLoading">Enregistrer</span>
           <span *ngIf="isLoading">Enregistrement...</span>
         </button>

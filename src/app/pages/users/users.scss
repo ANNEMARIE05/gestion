@@ -1,0 +1,33 @@
+// Mobile responsive optimizations
+@media (max-width: 640px) {
+  // Reduce spacing between cards on mobile
+  .card-shadow {
+    margin-bottom: 0.75rem !important;
+    
+    &:not(:last-child) {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  // Optimize mobile card view spacing
+  .border-b {
+    padding: 0.75rem;
+    
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+
+  // Ensure proper text wrapping
+  .truncate {
+    max-width: 100%;
+  }
+}
+
+// Tablet optimizations
+@media (min-width: 641px) and (max-width: 768px) {
+  .card-shadow {
+    padding: 1rem !important;
+  }
+}
+

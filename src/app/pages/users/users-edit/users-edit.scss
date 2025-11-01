@@ -52,3 +52,23 @@ button {
   }
 }
 
+// Mobile responsive optimizations
+@media (max-width: 640px) {
+  // Reduce spacing between form elements on mobile
+  .card-shadow {
+    margin-bottom: 0.75rem !important;
+  }
+
+  // Optimize form inputs on mobile
+  input, select {
+    font-size: 16px; // Prevents zoom on iOS
+  }
+}
+
+// Tablet optimizations
+@media (min-width: 641px) and (max-width: 768px) {
+  .card-shadow {
+    padding: 1rem !important;
+  }
+}
+

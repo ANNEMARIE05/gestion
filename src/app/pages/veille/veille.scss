@@ -1,0 +1,44 @@
+// Styles responsives pour mobile
+@media (max-width: 768px) {
+  // Réduire les espacements
+  .mb-8 {
+    margin-bottom: 1rem !important;
+  }
+
+  .mb-6 {
+    margin-bottom: 1rem !important;
+  }
+
+  .mb-4 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  // Réduire le padding des cards
+  .p-16 {
+    padding: 1.5rem !important;
+  }
+
+  // Réduire la taille du header
+  .text-3xl {
+    font-size: 1.5rem !important;
+  }
+
+  .text-2xl {
+    font-size: 1.25rem !important;
+  }
+
+  .text-4xl {
+    font-size: 2rem !important;
+  }
+
+  // Réduire la taille des icônes circulaires
+  .h-24.w-24 {
+    height: 4rem !important;
+    width: 4rem !important;
+  }
+
+  // Réduire l'espacement du texte
+  .mt-2 {
+    margin-top: 0.25rem !important;
+  }
+}
