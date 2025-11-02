@@ -11,33 +11,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class ParametreComponent implements OnInit {
   settings = {
-    notifications: {
-      email: true,
-      push: false,
-      sms: false
-    },
-    language: 'fr',
-    theme: 'light',
-    timezone: 'Europe/Paris'
+    security: {
+      twoFactor: false
+    }
   };
-
-  languages = [
-    { code: 'fr', label: 'Français' },
-    { code: 'en', label: 'English' },
-    { code: 'es', label: 'Español' }
-  ];
-
-  themes = [
-    { value: 'light', label: 'Clair' },
-    { value: 'dark', label: 'Sombre' },
-    { value: 'auto', label: 'Automatique' }
-  ];
-
-  timezones = [
-    { value: 'Europe/Paris', label: 'Europe/Paris (UTC+1)' },
-    { value: 'UTC', label: 'UTC (UTC+0)' },
-    { value: 'America/New_York', label: 'America/New_York (UTC-5)' }
-  ];
 
   constructor() { }
 
