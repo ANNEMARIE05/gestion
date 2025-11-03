@@ -1,0 +1,32 @@
+<div class="notification-container">
+  @for (notification of notifications(); track notification.id) {
+    <div 
+      class="notification notification-{{ notification.type }}"
+      [class.notification-show]="true"
+      (click)="removeNotification(notification.id)">
+      <div class="notification-content">
+        <div class="notification-icon">
+          @if (notification.type === 'success') {
+            <i class="fas fa-check-circle"></i>
+          } @else if (notification.type === 'info') {
+            <i class="fas fa-info-circle"></i>
+          } @else if (notification.type === 'warning') {
+            <i class="fas fa-exclamation-triangle"></i>
+          } @else if (notification.type === 'error') {
+            <i class="fas fa-times-circle"></i>
+          }
+        </div>
+        <div class="notification-message">
+          {{ notification.message }}
+        </div>
+        <button 
+          class="notification-close"
+          (click)="removeNotification(notification.id); $event.stopPropagation()"
+          aria-label="Fermer">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  }
+</div>
+

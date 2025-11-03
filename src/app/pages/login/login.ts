@@ -41,8 +41,10 @@ export class LoginComponent {
       // Simuler une requête API
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // Redirige vers le dashboard avec navigateByUrl qui est plus fiable
-      await this.router.navigateByUrl('/dashboard');
+      // Redirige vers le dashboard avec un état pour indiquer qu'on vient de se connecter
+      await this.router.navigateByUrl('/dashboard', { 
+        state: { fromLogin: true } 
+      });
       
       // Une fois la navigation réussie, isLoading restera true jusqu'à ce que la nouvelle page se charge
       // Mais comme on change de page, on peut laisser isLoading à true

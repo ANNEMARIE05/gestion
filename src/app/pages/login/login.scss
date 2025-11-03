@@ -1112,119 +1112,70 @@
 @media (max-width: 768px) {
   .content-wrapper {
     flex-direction: column;
-    gap: 40px;
-    padding: 20px;
+    gap: 25px;
+    padding: 15px;
   }
   
   .illustration-section {
     max-width: 100%;
-    padding: 20px;
+    padding: 10px;
+    display: none; // Cache l'illustration sur mobile
   }
   
   .form-section {
     max-width: 100%;
-    padding: 20px;
+    padding: 10px;
   }
   
   .login-card {
     max-width: 100%;
-    padding: 30px 25px;
+    padding: 30px 20px;
+  }
+
+  .top-logo {
+    top: 15px;
+    left: 15px;
   }
 
   .top-logo .logo-image {
-    height: 35px;
+    height: 30px;
   }
 
   .top-logo .logo-text {
-    font-size: 15px;
-  }
-
-  .login-title {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-container {
-    padding: 15px;
-  }
-
-  .shape-1, .shape-2, .shape-3, .shape-4 {
-    width: 150px;
-    height: 150px;
-    filter: blur(30px);
-  }
-
-  .orb-1 {
-    width: 250px;
-    height: 250px;
-  }
-
-  .orb-2 {
-    width: 200px;
-    height: 200px;
-  }
-
-  .orb-3 {
-    width: 180px;
-    height: 180px;
-  }
-  
-  .content-wrapper {
-    padding: 15px;
-    gap: 30px;
-  }
-  
-  .login-card {
-    padding: 40px 30px;
-    border-radius: 20px;
-    max-width: 100%;
-  }
-
-  .login-content {
-    gap: 28px;
-  }
-
-  .logo-circle {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 18px;
-  }
-
-  .logo-icon {
-    width: 35px;
-    height: 35px;
-  }
-
-  .login-title {
-    font-size: 28px;
-  }
-
-  .login-subtitle {
     font-size: 14px;
+  }
+
+  .form-header {
+    margin-bottom: 20px;
+  }
+
+  .platform-title {
+    font-size: 24px;
   }
 
   .login-form {
-    gap: 20px;
+    gap: 18px;
   }
 
-  .input-wrapper {
-    border-radius: 10px;
+  .form-group {
+    gap: 6px;
   }
 
-  .input-icon {
-    width: 45px;
-    height: 45px;
+  .field-label {
+    font-size: 13px;
+  }
+
+  .form-input {
+    padding: 10px 14px;
+    font-size: 14px;
     
-    svg {
-      width: 18px;
-      height: 18px;
+    &::placeholder {
+      font-size: 13px;
     }
   }
 
-  .login-input {
-    font-size: 14px;
-    padding: 13px 13px 13px 0;
+  .form-options {
+    gap: 10px;
   }
 
   .checkbox-label,
@@ -1233,19 +1184,8 @@
   }
 
   .login-button {
-    padding: 14px 20px;
+    padding: 12px 20px;
     font-size: 15px;
-  }
-
-  .button-icon {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .spinner {
-    width: 18px;
-    height: 18px;
-    border-width: 2.5px;
   }
 }
 
@@ -1276,75 +1216,67 @@
     width: 150px;
     height: 150px;
   }
+  
+  .content-wrapper {
+    padding: 10px;
+    gap: 20px;
+  }
 
   .login-card {
-    padding: 30px 25px;
-    border-radius: 18px;
+    padding: 25px 18px;
+    border-radius: 16px;
     max-width: 100%;
   }
 
-  .login-content {
-    gap: 24px;
+  .top-logo {
+    top: 10px;
+    left: 10px;
   }
 
-  .logo-circle {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 15px;
+  .top-logo .logo-image {
+    height: 28px;
   }
 
-  .logo-icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .login-title {
-    font-size: 24px;
-    margin-bottom: 6px;
-  }
-
-  .login-subtitle {
+  .top-logo .logo-text {
     font-size: 13px;
   }
 
+  .form-header {
+    margin-bottom: 18px;
+  }
+
+  .platform-title {
+    font-size: 22px;
+  }
+
   .login-form {
-    gap: 18px;
+    gap: 16px;
   }
 
-  .input-wrapper {
-    border-radius: 10px;
+  .form-group {
+    gap: 5px;
   }
 
-  .input-icon {
-    width: 40px;
-    height: 40px;
-    
-    svg {
-      width: 16px;
-      height: 16px;
-    }
+  .field-label {
+    font-size: 12px;
   }
 
-  .input-line {
-    left: 40px;
-  }
-
-  .login-input {
+  .form-input {
+    padding: 9px 12px;
     font-size: 14px;
-    padding: 12px 12px 12px 0;
     
     &::placeholder {
       font-size: 13px;
     }
   }
 
-  .options-row {
-    gap: 10px;
+  .form-options {
+    gap: 8px;
     flex-wrap: wrap;
   }
 
   .checkbox-wrapper {
-    gap: 8px;
+    gap: 6px;
   }
 
   .checkbox-input {
@@ -1358,8 +1290,119 @@
   }
 
   .login-button {
-    padding: 13px 18px;
+    padding: 11px 18px;
     font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .button-content {
     gap: 8px;
   }
+  
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+
+  .email-icon,
+  .password-toggle {
+    right: 6px;
+  }
+
+  .icon-mail,
+  .eye-icon {
+    width: 16px;
+    height: 16px;
+  }
 }
+
+// Very small phones
+@media (max-width: 360px) {
+  .login-container {
+    padding: 8px;
+  }
+
+  .content-wrapper {
+    padding: 8px;
+    gap: 15px;
+  }
+
+  .login-card {
+    padding: 20px 15px;
+    border-radius: 14px;
+  }
+
+  .top-logo {
+    top: 8px;
+    left: 8px;
+  }
+
+  .top-logo .logo-image {
+    height: 25px;
+  }
+
+  .top-logo .logo-text {
+    font-size: 12px;
+  }
+
+  .form-header {
+    margin-bottom: 15px;
+  }
+
+  .platform-title {
+    font-size: 20px;
+  }
+
+  .login-form {
+    gap: 14px;
+  }
+
+  .form-group {
+    gap: 4px;
+  }
+
+  .field-label {
+    font-size: 11px;
+  }
+
+  .form-input {
+    padding: 8px 10px;
+    font-size: 13px;
+    
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  .form-options {
+    gap: 6px;
+  }
+
+  .checkbox-input {
+    width: 14px;
+    height: 14px;
+  }
+
+  .checkbox-label,
+  .forgot-password-link {
+    font-size: 11px;
+  }
+
+  .login-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .spinner {
+    width: 14px;
+    height: 14px;
+  }
+
+  .icon-mail,
+  .eye-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
