@@ -1,66 +1,70 @@
-<div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+<div class="sticky top-0 z-40 flex h-12 sm:h-14 md:h-16 shrink-0 items-center gap-x-2 sm:gap-x-3 md:gap-x-4 border-b border-blue-800 bg-blue-800 px-2 sm:px-3 md:px-4 lg:px-8 shadow-sm sm:gap-x-4 sm:px-6">
   <!-- Mobile menu button -->
-  <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" (click)="toggleMobileSidebar()">
+  <button type="button" class="-m-1.5 sm:-m-2 md:-m-2.5 p-1.5 sm:p-2 md:p-2.5 text-white lg:hidden" (click)="toggleMobileSidebar()">
     <span class="sr-only">Ouvrir le menu</span>
-    <i class="fas fa-bars h-6 w-6" aria-hidden="true"></i>
+    <i class="fas fa-bars h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" aria-hidden="true"></i>
   </button>
 
-  <!-- Separator -->
-  <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true"></div>
+  <!-- Separator for mobile -->
+  <div class="h-4 sm:h-5 md:h-6 w-px bg-blue-700 lg:hidden" aria-hidden="true"></div>
 
-  <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-    <!-- Search -->
-    <form class="relative flex flex-1" action="#" method="GET">
-      <label for="search-field" class="sr-only">Rechercher</label>
-      <i class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400 pl-3 flex items-center" aria-hidden="true">
-        <i class="fas fa-search"></i>
-      </i>
-      <input id="search-field" class="block h-full w-full border-0 py-0 pl-10 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm" 
-             placeholder="Rechercher..." type="search" name="search">
-    </form>
-    
-    <div class="flex items-center gap-x-4 lg:gap-x-6">
+  <!-- Desktop menu button -->
+  <button type="button" class="-m-2.5 p-2.5 text-white hidden lg:block" (click)="toggleDesktopSidebar()">
+    <span class="sr-only">Toggle sidebar</span>
+    <i class="fas fa-bars h-6 w-6" aria-hidden="true"></i>
+  </button>
+  
+  <!-- Logo -->
+  <div class="flex items-center">
+    <span class="text-white text-sm sm:text-base md:text-lg lg:text-xl font-bold">Tableau R&D</span>
+  </div>
+
+  <!-- Separator for desktop -->
+  <div class="h-6 w-px bg-blue-700 hidden lg:block" aria-hidden="true"></div>
+
+  <div class="flex flex-1 gap-x-2 sm:gap-x-3 md:gap-x-4 self-stretch lg:gap-x-6">
+    <div class="flex items-center gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-6 ml-auto">
       <!-- Notifications -->
-      <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+      <button type="button" class="-m-1.5 sm:-m-2 md:-m-2.5 p-1.5 sm:p-2 md:p-2.5 text-white hover:text-blue-200">
         <span class="sr-only">Voir les notifications</span>
-        <i class="fas fa-bell h-6 w-6" aria-hidden="true"></i>
+        <i class="fas fa-bell h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" aria-hidden="true"></i>
       </button>
 
       <!-- Separator -->
-      <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true"></div>
+      <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-blue-700" aria-hidden="true"></div>
 
       <!-- Profile dropdown -->
       <div class="relative" (click)="toggleDropdown()">
-        <button type="button" class="-m-1.5 flex items-center p-1.5 hover:bg-gray-50 rounded-lg transition-colors duration-200">
+        <button type="button" class="-m-1 sm:-m-1.5 flex items-center p-1 sm:p-1.5 hover:bg-blue-700 rounded-lg transition-colors duration-200">
           <span class="sr-only">Ouvrir le menu utilisateur</span>
-          <div class="h-8 w-8 rounded-full bg-gray-50 ring-2 ring-blue-200 flex items-center justify-center">
-            <i class="fas fa-user text-gray-500 text-sm"></i>
+          <div class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 rounded-full bg-blue-700 ring-1 sm:ring-2 ring-blue-300 flex items-center justify-center">
+            <i class="fas fa-user text-white text-xs sm:text-xs md:text-sm"></i>
           </div>
           <span class="hidden lg:flex lg:items-center">
-            <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">Anne Marie</span>
-            <i class="ml-2 h-5 w-5 text-gray-400 transition-transform duration-200" [class.rotate-180]="isDropdownOpen" aria-hidden="true">
+            <span class="ml-4 text-sm font-semibold leading-6 text-white" aria-hidden="true">Anne Marie</span>
+            <i class="ml-2 h-5 w-5 text-white transition-transform duration-200" [class.rotate-180]="isDropdownOpen" aria-hidden="true">
               <i class="fas fa-chevron-down"></i>
             </i>
           </span>
         </button>
         
         <!-- Dropdown menu -->
-        <div *ngIf="isDropdownOpen" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
-          <div class="px-4 py-2 border-b border-gray-100">
-            <p class="text-sm font-medium text-gray-900">Anne Marie</p>
-            <p class="text-xs text-gray-500">tom.cook@entreprise.com</p>
+        <div *ngIf="isDropdownOpen" class="absolute right-0 z-10 mt-2 w-40 sm:w-48 origin-top-right rounded-lg bg-white py-0.5 sm:py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
+          <div class="px-3 sm:px-4 py-1.5 sm:py-2 border-b border-gray-100">
+            <p class="text-xs sm:text-sm font-medium text-gray-900">Anne Marie</p>
+            <p class="text-[10px] sm:text-xs text-gray-500">tom.cook@entreprise.com</p>
           </div>
-          <a routerLink="/profile" (click)="isDropdownOpen = false" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200" role="menuitem">
-            <i class="fas fa-user mr-3 text-gray-400"></i>
+          <a routerLink="/profile" (click)="isDropdownOpen = false" class="flex items-center px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200" role="menuitem">
+            <i class="fas fa-user mr-2 sm:mr-3 text-gray-400 text-xs sm:text-sm"></i>
             Mon Profil
           </a>
-          <a routerLink="/parametre" (click)="isDropdownOpen = false" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200" role="menuitem">
-            <i class="fas fa-cog mr-3 text-gray-400"></i>
+          <a routerLink="/parametre" (click)="isDropdownOpen = false" class="flex items-center px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200" role="menuitem">
+            <i class="fas fa-cog mr-2 sm:mr-3 text-gray-400 text-xs sm:text-sm"></i>
             Paramètres
           </a>
           <div class="border-t border-gray-100"></div>
-          <a href="#" (click)="onLogoutClick($event)" class="flex items-center px-4 py-2 text-sm text-red-700 hover:bg-red-50 transition-colors duration-200" role="menuitem">
-            <i class="fas fa-sign-out-alt mr-3 text-red-500"></i>
+          <a href="#" (click)="onLogoutClick($event)" class="flex items-center px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-red-700 hover:bg-red-50 transition-colors duration-200" role="menuitem">
+            <i class="fas fa-sign-out-alt mr-2 sm:mr-3 text-red-500 text-xs sm:text-sm"></i>
             Déconnexion
           </a>
         </div>

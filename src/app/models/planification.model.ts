@@ -11,6 +11,8 @@ export interface Planification {
   action_corrective: string;
   statut: 'en_cours' | 'termine' | 'en_retard' | 'annule';
   date_finition?: Date;
+  jalons_cles_atteints?: string;
+  date_fin_reelle?: Date;
   commentaire: string;
   created_at: Date;
 }

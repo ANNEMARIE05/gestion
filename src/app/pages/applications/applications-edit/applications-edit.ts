@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
@@ -18,6 +18,7 @@ export class ApplicationsEditComponent implements OnInit {
   selectedProjetId: string = '';
   selectedDevId: string = '';
   selectedStacks: string[] = [];
+  isStackDropdownOpen = false;
   
   isLoading = false;
 
@@ -128,6 +129,32 @@ export class ApplicationsEditComponent implements OnInit {
 
   isStackSelected(stack: string): boolean {
     return this.selectedStacks.includes(stack);
+  }
+
+  toggleStackDropdown(): void {
+    this.isStackDropdownOpen = !this.isStackDropdownOpen;
+  }
+
+  closeStackDropdown(): void {
+    this.isStackDropdownOpen = false;
+  }
+
+  getSelectedStacksDisplay(): string {
+    if (this.selectedStacks.length === 0) {
+      return 'Sélectionner des stacks';
+    }
+    if (this.selectedStacks.length === 1) {
+      return this.selectedStacks[0];
+    }
+    return `${this.selectedStacks.length} stacks sélectionnées`;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.stack-dropdown-container')) {
+      this.isStackDropdownOpen = false;
+    }
   }
 
   onSubmit(): void {

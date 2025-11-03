@@ -56,6 +56,8 @@ export class PlanificationComponent implements OnInit {
       probleme_rencontrer: 'Problème de performance sur certaines pages',
       action_corrective: 'Optimisation du code et utilisation du lazy loading',
       statut: 'en_cours',
+      jalons_cles_atteints: '- Interface utilisateur complète\n- Authentification fonctionnelle\n- Intégration API de base',
+      date_fin_reelle: undefined,
       commentaire: 'Bon avancement global',
       created_at: new Date('2024-03-01')
     },
@@ -99,6 +101,8 @@ export class PlanificationComponent implements OnInit {
       probleme_rencontrer: 'Délai de livraison des maquettes',
       action_corrective: 'Coordination renforcée avec le designer',
       statut: 'en_cours',
+      jalons_cles_atteints: '- Structure de base de l\'application\n- Composants UI principaux',
+      date_fin_reelle: undefined,
       commentaire: 'En attente de validation des designs',
       created_at: new Date('2024-03-10')
     }

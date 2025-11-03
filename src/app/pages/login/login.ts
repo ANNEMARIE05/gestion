@@ -27,6 +27,9 @@ export class LoginComponent {
         // Simuler une requête API
         await new Promise(resolve => setTimeout(resolve, 1500));
         
+        // Marquer qu'une connexion vient d'être effectuée
+        sessionStorage.setItem('justLoggedIn', 'true');
+        
         // Pour l'instant, redirige simplement vers le dashboard
         this.router.navigate(['/dashboard']);
       } catch (error) {
@@ -35,6 +38,12 @@ export class LoginComponent {
         this.isLoading = false;
       }
     }
+  }
+
+  onSignup() {
+    // TODO: Naviguer vers la page d'inscription ou ouvrir un modal
+    console.log('Navigate to signup page');
+    // this.router.navigate(['/signup']);
   }
 }
 

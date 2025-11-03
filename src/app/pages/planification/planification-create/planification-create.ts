@@ -21,6 +21,7 @@ export class PlanificationCreateComponent implements OnInit {
     probleme_rencontrer: '',
     action_corrective: '',
     statut: 'en_cours',
+    jalons_cles_atteints: '',
     commentaire: '',
     created_at: new Date()
   };
@@ -82,9 +83,13 @@ export class PlanificationCreateComponent implements OnInit {
     return date.toISOString().split('T')[0];
   }
 
-  onDateChange(dateString: string, field: 'date_debut' | 'date_fin'): void {
+  onDateChange(dateString: string, field: 'date_debut' | 'date_fin' | 'date_fin_reelle'): void {
     if (dateString) {
-      this.planification[field] = new Date(dateString);
+      if (field === 'date_fin_reelle') {
+        this.planification.date_fin_reelle = new Date(dateString);
+      } else {
+        this.planification[field] = new Date(dateString);
+      }
     }
   }
 

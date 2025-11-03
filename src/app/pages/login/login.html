@@ -1,32 +1,52 @@
 <div class="login-container">
-  <!-- Background decorative circles -->
-  <div class="bg-circle bg-circle-1"></div>
-  <div class="bg-circle bg-circle-2"></div>
+  <!-- Animated Background Pattern -->
+  <div class="bg-pattern"></div>
+  
+  <!-- Floating decorative elements -->
+  <div class="floating-shape shape-1"></div>
+  <div class="floating-shape shape-2"></div>
+  <div class="floating-shape shape-3"></div>
+  <div class="floating-shape shape-4"></div>
+
+  <!-- Gradient Orbs -->
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
 
   <!-- Main content container -->
   <div class="content-wrapper">
-    <!-- Login Card (Centered - White) -->
+    <!-- Login Card -->
     <div class="login-card">
+      <div class="card-shine"></div>
       <div class="login-content">
-        <h1 class="login-title">Connexion</h1>
+        <!-- Logo/Icon Area -->
+        <div class="logo-section">
+          <div class="logo-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="logo-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h1 class="login-title">Bienvenue</h1>
+          <p class="login-subtitle">Connectez-vous à votre compte</p>
+        </div>
 
         <form (ngSubmit)="onSubmit()" class="login-form">
           <!-- Email/User ID Field -->
           <div class="input-wrapper">
             <div class="input-icon">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
-            <div class="input-separator"></div>
             <input 
               type="text" 
               [(ngModel)]="email" 
               name="email" 
-              placeholder="Saisissez votre identifiant ou email" 
+              placeholder="Identifiant ou email" 
               class="login-input"
               required
             />
+            <div class="input-line"></div>
           </div>
 
           <!-- Password Field -->
@@ -36,15 +56,15 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
-            <div class="input-separator"></div>
             <input 
               type="password" 
               [(ngModel)]="password" 
               name="password" 
-              placeholder="Saisissez votre mot de passe" 
+              placeholder="Mot de passe" 
               class="login-input"
               required
             />
+            <div class="input-line"></div>
           </div>
 
           <!-- Remember me and Forgot Password -->
@@ -58,11 +78,14 @@
 
           <!-- Login Button -->
           <button type="submit" class="login-button" [disabled]="isLoading">
-            <svg *ngIf="!isLoading" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" class="button-icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-            <div *ngIf="isLoading" class="spinner"></div>
-            <span>{{ isLoading ? 'CONNEXION...' : 'SE CONNECTER' }}</span>
+            <span class="button-content">
+              <svg *ngIf="!isLoading" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="button-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+              <div *ngIf="isLoading" class="spinner"></div>
+              <span>{{ isLoading ? 'Connexion...' : 'Se connecter' }}</span>
+            </span>
+            <div class="button-shine"></div>
           </button>
         </form>
       </div>

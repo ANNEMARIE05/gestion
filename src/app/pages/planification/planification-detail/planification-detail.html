@@ -42,7 +42,17 @@
             <label class="block text-xs sm:text-sm font-medium text-gray-500 mb-1">Date de finition</label>
             <p class="mt-0.5 sm:mt-1 text-xs sm:text-sm text-gray-900">{{ planification.date_finition | date:'dd/MM/yyyy' }}</p>
           </div>
+          <div *ngIf="planification.date_fin_reelle">
+            <label class="block text-xs sm:text-sm font-medium text-gray-500 mb-1">Date de fin réelle</label>
+            <p class="mt-0.5 sm:mt-1 text-xs sm:text-sm text-gray-900">{{ planification.date_fin_reelle | date:'dd/MM/yyyy' }}</p>
+          </div>
         </div>
+      </div>
+
+      <!-- Jalons clés atteints -->
+      <div class="card-shadow bg-white rounded-none p-3 sm:p-4 md:p-6" *ngIf="planification.jalons_cles_atteints">
+        <h2 class="text-sm sm:text-lg md:text-xl font-semibold text-gray-900 mb-2 sm:mb-4">Jalons clés atteints</h2>
+        <p class="text-xs sm:text-sm text-gray-700 whitespace-pre-line">{{ planification.jalons_cles_atteints }}</p>
       </div>
 
       <!-- Planning et avancement -->

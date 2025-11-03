@@ -27,6 +27,10 @@ export class HeaderComponent {
     this.sidebarService.toggleMobile();
   }
 
+  toggleDesktopSidebar(): void {
+    this.sidebarService.toggle();
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
     const target = event.target as HTMLElement;

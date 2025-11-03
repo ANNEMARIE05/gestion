@@ -55,6 +55,8 @@ export class PlanificationDetailComponent implements OnInit {
       probleme_rencontrer: 'Problème de performance sur certaines pages',
       action_corrective: 'Optimisation du code et utilisation du lazy loading',
       statut: 'en_cours',
+      jalons_cles_atteints: '- Interface utilisateur complète\n- Authentification fonctionnelle\n- Intégration API de base',
+      date_fin_reelle: undefined,
       commentaire: 'Bon avancement global',
       created_at: new Date('2024-03-01')
     }
