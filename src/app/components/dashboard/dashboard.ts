@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [CommonModule],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss']
 })
 export class DashboardComponent implements OnInit {
-  showWelcomeNotification = false;
-  
   stats = {
     users: {
       total: 45,
@@ -46,21 +43,6 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // Vérifier si l'utilisateur vient de se connecter
-    const justLoggedIn = sessionStorage.getItem('justLoggedIn');
-    if (justLoggedIn === 'true') {
-      this.showWelcomeNotification = true;
-      // Retirer le flag après affichage
-      sessionStorage.removeItem('justLoggedIn');
-      
-      // Fermer automatiquement après 5 secondes
-      setTimeout(() => {
-        this.closeWelcomeNotification();
-      }, 5000);
-    }
-  }
-
-  closeWelcomeNotification(): void {
-    this.showWelcomeNotification = false;
+    // Code d'initialisation du dashboard
   }
 }

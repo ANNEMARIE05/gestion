@@ -1,26 +1,28 @@
 <div class="sticky top-0 z-40 flex h-12 sm:h-14 md:h-16 shrink-0 items-center gap-x-2 sm:gap-x-3 md:gap-x-4 border-b border-blue-800 bg-blue-800 px-2 sm:px-3 md:px-4 lg:px-8 shadow-sm sm:gap-x-4 sm:px-6">
+  <!-- Logo with image -->
+  <div class="flex items-center gap-2 sm:gap-3">
+    <img 
+      src="https://media.licdn.com/dms/image/v2/C4E0BAQEF3B9QdqlSjQ/company-logo_200_200/company-logo_200_200/0/1630592764477/ngser_logo?e=2147483647&v=beta&t=Z1P0wpDyVYvhaC57UYS_D797kxtekNTqyviIiXLvCKw" 
+      alt="Tableau R&D Logo"
+      class="h-6 sm:h-7 md:h-8 w-auto object-contain"
+    />
+    <span class="text-white text-sm sm:text-base md:text-lg lg:text-xl font-bold">Tableau R&D</span>
+  </div>
+
   <!-- Mobile menu button -->
   <button type="button" class="-m-1.5 sm:-m-2 md:-m-2.5 p-1.5 sm:p-2 md:p-2.5 text-white lg:hidden" (click)="toggleMobileSidebar()">
     <span class="sr-only">Ouvrir le menu</span>
     <i class="fas fa-bars h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" aria-hidden="true"></i>
   </button>
 
-  <!-- Separator for mobile -->
-  <div class="h-4 sm:h-5 md:h-6 w-px bg-blue-700 lg:hidden" aria-hidden="true"></div>
-
   <!-- Desktop menu button -->
   <button type="button" class="-m-2.5 p-2.5 text-white hidden lg:block" (click)="toggleDesktopSidebar()">
     <span class="sr-only">Toggle sidebar</span>
     <i class="fas fa-bars h-6 w-6" aria-hidden="true"></i>
   </button>
-  
-  <!-- Logo -->
-  <div class="flex items-center">
-    <span class="text-white text-sm sm:text-base md:text-lg lg:text-xl font-bold">Tableau R&D</span>
-  </div>
 
-  <!-- Separator for desktop -->
-  <div class="h-6 w-px bg-blue-700 hidden lg:block" aria-hidden="true"></div>
+  <!-- Separator -->
+  <div class="h-4 sm:h-5 md:h-6 w-px bg-blue-700" aria-hidden="true"></div>
 
   <div class="flex flex-1 gap-x-2 sm:gap-x-3 md:gap-x-4 self-stretch lg:gap-x-6">
     <div class="flex items-center gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-6 ml-auto">
